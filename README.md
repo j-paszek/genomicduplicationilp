@@ -16,11 +16,11 @@
 `-h, --help`  &ensp; show help message and exit<br>
 
 `--intervallimit [INTERVAL_LIMIT]` Set the maximal length of intervals.<br> 
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  Default k=0, and no intervals are shortened. It is equivalent to $\lambda = \infty$ used in the publication.<br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  Default k=0, and no intervals are shortened. It is equivalent to &lambda; = &infin; used in the publication.<br>
 &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; If equals k>0, then all intervals with length y>k are shortened to the size k. <br>
 &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Note &lambda; from publication (edge interval length) equals _k-1_ (as parameter k denote node length of an interval)<br>
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; In example for a gene tree node $g$ the interval equals $\langle M(g),b \rangle$, where $M(g)$ is a lca-mapping of $g$ in the species tree,<br>
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  and $b$ is a node in species tree. If $|\langle M(g),b \rangle| = y > k$ then we assign new interval $\langle M(g),c \rangle$ such that <br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; In example for a gene tree node _g_ the interval equals &lang; $\langle M(g),b \rangle$, where _M(g)_ is a lca-mapping of _g_ in the species tree,<br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  and _b_ is a node in species tree. If $|\langle M(g),b \rangle| = y > k$ then we assign new interval $\langle M(g),c \rangle$ such that <br>
 &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; $|\langle M(g),b \rangle| = k$ and $c \in \langle M(g),b \rangle$;  nodes are removed from 'b' side. <br>
 &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; In other words we limit the distance between the duplication mapping and lca-mapping not to exceed k.<br>
 
