@@ -25,7 +25,7 @@
 &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; In other words we limit the distance between the duplication mapping and lca-mapping not to exceed k.<br>
 
 `--max_converted_spec [MAX_CONVERTED_SPEC]` Set the maximal number of speciations that can be converted into duplications ($\sigma$)<br>
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Default parameter $\sigma = \infty$. To manually set $\sigma = \infty$, write -1. <br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Default parameter _&sigma; = &infin;_. To manually set _&sigma; = &infin;_, write -1. <br>
 
 `--time_limit [TIME_LIMIT]` Set the maximal computation time in seconds.<br>
 
@@ -92,11 +92,11 @@ Input data is stored in `tests\` folder. In our study we use TreeFam dataset - f
 The folder contains also sample tests and `test_gd_ilp.py` to perform unittest.<br>
 
 **Output data**<br>
-The experimental section describes the evaluation of the results stored at `results\out_name_k_`$\sigma$`.csv`<br>
+The experimental section describes the evaluation of the results stored at `results\out_name_k_`&sigma;`.csv`<br>
 Where:<br>
 - name - sim1, ..., sim5, treefam - is the name of the corresponding input dataset<br>
 - k - the value of INTERVAL_LIMIT parameter used<br>
-- $\sigma$ -the value of MAX_CONVERTED_SPEC parameter used<br>
+- &sigma; -the value of MAX_CONVERTED_SPEC parameter used<br>
 
 ## Examples:
 
@@ -107,7 +107,7 @@ Computes GME model (called also unrestricted, FHS), that is, NP-hard Problem 1.T
 Computes 0-GME model (LCA). The output is written to out_treefam_1_-1.csv.<br>
 
 `python gdilp.py --max_converted_spec 0 tests/treefam.txt`<br>
-Computes $\infty$,0-GME model (RME). The output is written to out_treefam_0_0.csv.<br>
+Computes &infin;,0-GME model (RME). The output is written to out_treefam_0_0.csv.<br>
 
 `python3 gdilp.py --intervallimit 7 --max_converted_spec 3066 --time_limit 25000 tests/treefam.txt` <br>
 Computes 7,3066-GME model. The output is written to out_treefam_7_3066.csv. <br>
