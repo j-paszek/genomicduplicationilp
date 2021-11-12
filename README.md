@@ -85,7 +85,7 @@ However, if we log out from the server and then log in again, then we have to ru
 **Simulated data**<br>
 The original SimPhy results are in `wgd-simulations` folder.<br>
 `sim_utils.py` was used to extract data to input files stored as `tests\sim[i].txt`<br>
-Note `[i]`file corresponds to _S<sub>i<\sub>_ tree (see Figure 1)<br>
+Note `[i]`file corresponds to _S<sub>i</sub>_ tree (see Figure 1)<br>
 
 **Input data**<br>
 Input data is stored in `tests\` folder. In our study we use TreeFam dataset - file `treefam.txt`.<br>
@@ -113,5 +113,16 @@ Computes &infin;,0-GME model (RME). The output is written to out_treefam_0_0.csv
 Computes 7,3066-GME model. The output is written to out_treefam_7_3066.csv. <br>
 If the computation not ends in 25000 seconds, then the output consist the current best solution. <br>
 
+
+## Publication:
+
+Novel genomic duplication models through integer linear programming
+ 
+Jarosław Paszek, Oliver Eulenstein, Paweł Górecki
+
+BCB '21: Proceedings of the 12th ACM Conference on Bioinformatics, Computational Biology, and Health InformaticsAugust 2021 
+Article No.: 16 Pages 1–11 https://doi.org/10.1145/3459930.3469549
+
+ 
 
 
