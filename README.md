@@ -120,7 +120,7 @@ Novel genomic duplication models through integer linear programming
  
 Jarosław Paszek, Oliver Eulenstein, Paweł Górecki
 
-BCB '21: Proceedings of the 12th ACM Conference on Bioinformatics, Computational Biology, and Health InformaticsAugust 2021 
+BCB '21: Proceedings of the 12th ACM Conference on Bioinformatics, Computational Biology, and Health Informatics August 2021 <br>
 Article No.: 16 Pages 1–11 https://doi.org/10.1145/3459930.3469549
 
  
