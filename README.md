@@ -19,9 +19,9 @@
 &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  Default k=0, and no intervals are shortened. It is equivalent to &lambda; = &infin; used in the publication.<br>
 &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; If equals k>0, then all intervals with length y>k are shortened to the size k. <br>
 &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Note &lambda; from publication (edge interval length) equals _k-1_ (as parameter k denote node length of an interval)<br>
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; In example for a gene tree node _g_ the interval equals &lang; $\langle M(g),b \rangle$, where _M(g)_ is a lca-mapping of _g_ in the species tree,<br>
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  and _b_ is a node in species tree. If $|\langle M(g),b \rangle| = y > k$ then we assign new interval $\langle M(g),c \rangle$ such that <br>
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; $|\langle M(g),b \rangle| = k$ and $c \in \langle M(g),b \rangle$;  nodes are removed from 'b' side. <br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; In example for a gene tree node _g_ the interval equals _&lang; M(g),b &rang;_, where _M(g)_ is a lca-mapping of _g_ in the species tree,<br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  and _b_ is a node in species tree. If _|&lang; M(g),b &rang;| = y > k_ then we assign new interval _&lang; M(g),c &rang;_ such that <br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; _|&lang; M(g),b &rang;| = k_ and _c \in &lang; M(g),b &rang;_;  nodes are removed from 'b' side. <br>
 &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; In other words we limit the distance between the duplication mapping and lca-mapping not to exceed k.<br>
 
 `--max_converted_spec [MAX_CONVERTED_SPEC]` Set the maximal number of speciations that can be converted into duplications ($\sigma$)<br>
