@@ -9,7 +9,7 @@
 ## positional arguments:
 
 `input_file`  &ensp;Default input is a file in RME format. The first line consist of the number of gene trees n. <br>
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The next n lines represent gene trees. Then, the following line consist of the species tree.<br>
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The next n lines represent gene trees. Then, the following line consist of the species tree.<br>
 
 ## optional arguments:
 
@@ -24,7 +24,7 @@
 &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; _|&lang; M(g),b &rang;| = k_ and _c \in &lang; M(g),b &rang;_;  nodes are removed from 'b' side. <br>
 &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; In other words we limit the distance between the duplication mapping and lca-mapping not to exceed k.<br>
 
-`--max_converted_spec [MAX_CONVERTED_SPEC]` Set the maximal number of speciations that can be converted into duplications ($\sigma$)<br>
+`--max_converted_spec [MAX_CONVERTED_SPEC]` Set the maximal number of speciations that can be converted into duplications (&sigma;)<br>
 &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Default parameter _&sigma; = &infin;_. To manually set _&sigma; = &infin;_, write -1. <br>
 
 `--time_limit [TIME_LIMIT]` Set the maximal computation time in seconds.<br>
@@ -85,7 +85,7 @@ However, if we log out from the server and then log in again, then we have to ru
 **Simulated data**<br>
 The original SimPhy results are in `wgd-simulations` folder.<br>
 `sim_utils.py` was used to extract data to input files stored as `tests\sim[i].txt`<br>
-Note `[i]`file corresponds to $S_i$ tree (see Figure 1)<br>
+Note `[i]`file corresponds to _S<sub>i<\sub>_ tree (see Figure 1)<br>
 
 **Input data**<br>
 Input data is stored in `tests\` folder. In our study we use TreeFam dataset - file `treefam.txt`.<br>
@@ -111,7 +111,7 @@ Computes &infin;,0-GME model (RME). The output is written to out_treefam_0_0.csv
 
 `python3 gdilp.py --intervallimit 7 --max_converted_spec 3066 --time_limit 25000 tests/treefam.txt` <br>
 Computes 7,3066-GME model. The output is written to out_treefam_7_3066.csv. <br>
-If the computation not ends in 25000, then the output consist the current best solution. <br>
+If the computation not ends in 25000 seconds, then the output consist the current best solution. <br>
 
 
 
