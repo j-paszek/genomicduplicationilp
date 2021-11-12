@@ -1,0 +1,4 @@
+1
+((((((a,a),a),d),(a,d)),c),(c,(c,(c,(c,c)))))
+# above gene trees, below the corresponding species tree; child map forces conversion of (((((a,a),a),d),(a,d)),c)
+(((a,d),c),b)

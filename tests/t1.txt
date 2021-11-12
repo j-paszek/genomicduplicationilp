@@ -1,0 +1,4 @@
+1
+((((((a,a),a),b),(a,b)),c),(c,(c,(c,(c,c)))))
+# above gene trees, below the corresponding species tree
+((a,b),c)
