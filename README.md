@@ -1,84 +1,114 @@
 # Usage: 
 <pre>
-`gdilp.py [-h] [--intervallimit [INTERVAL_LIMIT]]
+gdilp.py [-h] [--intervallimit [INTERVAL_LIMIT]]
          [--max_converted_spec [MAX_CONVERTED_SPEC]]
          [--time_limit [TIME_LIMIT]]
-         input_file`
+         input_file
  </pre> 
 
-## positional arguments:
+### positional arguments:
 
-`input_file`  &ensp;Default input is a file in RME format. The first line consist of the number of gene trees n. <br>
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The next n lines represent gene trees. Then, the following line consist of the species tree.<br>
+`input_file`  &ensp;&ensp;sets the name of the file with the input data;<br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Default input is a file in RME format. The first line consist of the number of gene trees n. <br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The next n lines represent gene trees. Then, the following line consist of the species tree.<br>
 
-## optional arguments:
+### optional arguments:
 
-`-h, --help`  &ensp; show help message and exit<br>
+`-h, --help`  &ensp;&ensp;shows help message and exit<br>
 
-`--intervallimit [INTERVAL_LIMIT]` Set the maximal length of intervals.<br> 
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  Default k=0, and no intervals are shortened. It is equivalent to &lambda; = &infin; used in the publication.<br>
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; If equals k>0, then all intervals with length y>k are shortened to the size k. <br>
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Note &lambda; from publication (edge interval length) equals _k-1_ (as parameter k denote node length of an interval)<br>
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; In example for a gene tree node _g_ the interval equals _&lang; M(g),b &rang;_, where _M(g)_ is a lca-mapping of _g_ in the species tree,<br>
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  and _b_ is a node in species tree. If _|&lang; M(g),b &rang;| = y > k_ then we assign new interval _&lang; M(g),c &rang;_ such that <br>
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; _|&lang; M(g),b &rang;| = k_ and _c \in &lang; M(g),b &rang;_;  nodes are removed from 'b' side. <br>
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; In other words we limit the distance between the duplication mapping and lca-mapping not to exceed k.<br>
+`--intervallimit [INTERVAL_LIMIT]` <br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; sets the maximal length of intervals (parameter _k_); <br> 
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Parameter _k_ is set to INTERVAL_LIMIT value.<br> 
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  Default _k = 0_, and no intervals are shortened. It is equivalent to _&lambda; = &infin;_ used in the publication.<br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; If _k > 0_, then all intervals with length _y > k_ are shortened to the size of _k_. <br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Note _&lambda;_ from the definition in the publication (edge interval length) <br> 
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; equals _k-1_ (as parameter _k_ denote node length of an interval).<br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; In example for a gene tree node _g_ the interval equals _&lang;M(g),b&rang;_, where _M(g)_ is a lca-mapping of _g_<br> 
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  in the species tree, and _b_ is a node in species tree.<br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; If _|&lang;M(g),b&rang;| = y > k_ then we assign new interval _&lang;M(g),c&rang;_ such that _|&lang;M(g),c&rang;| = k_ and _c &isin; &lang;M(g),b&rang;_.<br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  In other words, nodes are removed from 'b' side of the interval. <br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; In summary, for every gene tree node _g_ we limit the distance (in the species tree) between <br> 
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; its mapping in a potential solution and its lca-mapping  not to exceed _k_.<br>
 
-`--max_converted_spec [MAX_CONVERTED_SPEC]` Set the maximal number of speciations that can be converted into duplications (&sigma;)<br>
-&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Default parameter _&sigma; = &infin;_. To manually set _&sigma; = &infin;_, write -1. <br>
+`--max_converted_spec [MAX_CONVERTED_SPEC]` <br> 
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; sets the maximal number of speciations that can be converted into duplications (parameter _&sigma;_).<br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Parameter _&sigma;_ is set to MAX_CONVERTED_SPEC value.<br>
+&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Default value of the parameter is _&sigma; = &infin;_. To manually set _&sigma; = &infin;_, write -1. <br>
 
-`--time_limit [TIME_LIMIT]` Set the maximal computation time in seconds.<br>
+`--time_limit [TIME_LIMIT]` sets the maximal computation time in seconds.<br>
 
 
 
 # Installation:
 
-**Requirements**
-
-(A) Installation gurobi solver.<br> 
-- _Local machines_ (A) be sufficient to run `gdilp` (install also Biopython, Pandas if not present)<br>
-- _Remote servers_ Please try (B)<br>
-(B) Create python environment as described below.<br>
-
-Default modules: &emsp; &emsp;&emsp;&ensp; timeit,  argparse (Python >= 3.2), io<br>
-Required modules: &emsp; &emsp; &ensp;Bio, gurobipy, pandas<br>
-Optional:&emsp; &emsp;&emsp;&emsp; &emsp;&emsp; &emsp;&ensp;pytest<br>
-
-Info:<br>
-- See `requiremets.txt` for other requirements info (eg. gurobipy version 9.1.1 was used).<br>
-- The installation of gurobipy requires sudo, therefore, I suggest to create a python environment as described below.<br>
-
-**Download sources**<br>
+### Step 1 - Download sources
 
 Download zipped folder of this repository. Unzip to project source folder (like `genomicduplicationilp-master/`).<br>
 
-**Create python environment**<br>
+### Step 2 A - Run on a local machine
 
-(1) `python3 -m venv gurobi-env` &emsp;&emsp; &emsp;&emsp;&emsp;&emsp; Create virtual environment at project source folder.<br>
-(2) `source ./gurobi-env/bin/activate` &emsp;&emsp; &emsp;Activate the environment.<br>
-gurobipy installation:<br>
-(3) `cd /opt/gurobi901/linux64/` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp; Go to the gurobi folder.<br>
-(4) `python3 setup.py build -b PATH install` Gurobi installation to a selected PATH. Useful on remote servers. <br>
-&emsp;&emsp;Running only this command not in virtual environment is not enough, because it instals gurobipy into the python folder <br>
-&emsp;&emsp;causing another permission denied (not in /opt/gurobi... but in python folder instead)<br>
+**1.** **Install gurobi solver.** <br>
+**-** see https://www.gurobi.com/downloads/gurobi-software/ <br>
+**-** note, it is possible to obtain an academic license <br>
+**-** gurobipy package can be installed by `python3.9 -m pip install gurobipy`<br>
+**-** gurobi licence can be installed by `grbgetkey <licence number>` 
+**-** gurobipy version 9.1.1 was used
+
+**2.** **Install other standard python packages if they are missing.** <br>
+**-** See `requiremets.txt` for other requirements info. <br>
+**- Requirements** <br>
+Default modules: &emsp; &emsp;&emsp;&ensp;&ensp;timeit,  argparse (Python >= 3.2), io<br>
+Required modules: &emsp; &emsp; &ensp; Bio, gurobipy, pandas<br>
+Optional:&emsp; &emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&ensp;pytest<br>
+Sample commands to install required modules: <br>
+**- -** `python3.9 -m pip install Biopython` <br>
+**- -** `python3.9 -m pip install pandas` <br>
+
+**3.** **Run** <br>
+**-** Sample command`python gdilp.py input_file`
+
+### Step 2B - Run on a remote server
+
+The installation of required packages (like gurobipy) may be possible only with root rights. <br> 
+Therefore, I suggest to create a python environment as described below.<br>
+The following steps could be also used on local machines.
+
+### Step 2B.1 - First run (with the creation of an environment)
+**2B.1.1. Create python environment**<br>
+
+(1) `python3 -m venv gurobi-env` &emsp;&emsp; &emsp;&emsp;&emsp;&ensp;&emsp; Create virtual environment at project source folder.<br>
+(2) `source ./gurobi-env/bin/activate` &emsp;&emsp;&emsp;&ensp; Activate the environment.<br>
+
+**2B.1.2. gurobipy installation:**<br>
+(3) `cd /opt/gurobi901/linux64/` &emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&ensp; Go to the gurobi folder.<br>
+(4) `python3 setup.py build -b PATH install` &ensp; Gurobi installation to a selected PATH. Useful on remote servers. <br>
+_Note: Running the above command not in virtual environment (without steps 1-2) is not enough, because it instals <br> 
+gurobipy into the python folder causing another permission denied error (not in /opt/gurobi... but in python folder instead)_<br>
 (5) `cd genomicduplicationilp-master/` &emsp;&emsp;&emsp;&ensp; Go to the project source folder.<br>
+
+**2B.1.3. Install other standard python packages if they are missing:**<br>
 (6) `pip3 install biopython ` &emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp; &emsp;&emsp;&ensp; Biopython installation.<br>
 (7) `pip3 install pandas` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp; Pandas installation.<br>
-Now the environment is ready to use. Use commands (i)-(iv). Than multiple runs like (v). See below.<br>
-(8) `deactivate` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Close virtual environment.<br>
 
-**Run from environment**
+**Now the environment is ready to use. Use commands (i)-(iv). Than multiple runs like (v). See below.**<br>
+**To close virtual environment use (vi).**
 
-( i ) `source ./gurobi-env/bin/activate` &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;Activate the environment.<br>
+### Step 2B.2 - Run from environment
+
+**2B.2.1 Activate the environment.** <br>
+( i ) `source ./gurobi-env/bin/activate` &emsp;&emsp; &emsp;&emsp;&emsp;&emsp;<br>
+**2B.2.2 Configure the environment.** <br>
 (ii )  `export GUROBI_HOME="/opt/gurobi901/linux64"` Now 3 magic configuration lines.<br>
 (iii)  `export PATH="${PATH}:${GUROBI_HOME}/bin"`<br>
 (iv) `export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"`<br>
-(v ) `python3 gdilp.py tests/guigo.txt` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Run the ILP.<br>
-(vi)  `deactivate`&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;  Close virtual environment.<br>
+**2B.2.3 Now multiple runs are possible, in example:** <br>
+(v ) `python3 gdilp.py tests/guigo.txt` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<br>
+**2B.2.4 To close the environment:**<br>
+(vi)  `deactivate`&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;<br>
 
 Note:<br>
-Normally, we only need to activate the environment. And than run as many cumputations (v) as we desire.<br>
-However, if we log out from the server and then log in again, then we have to run 3 magic lines again.<br>
+_Normally, we only need to activate the environment. And than run as many computations (v) as we desire._<br>
+_However, if we log out from the server and then log in again, then we have to run 3 magic lines again.<br>_
 
 ## Project files
 
@@ -120,7 +150,8 @@ Novel genomic duplication models through integer linear programming
  
 Jarosław Paszek, Oliver Eulenstein, Paweł Górecki
 
-BCB '21: Proceedings of the 12th ACM Conference on Bioinformatics, Computational Biology, and Health Informatics August 2021 <br>
+BCB '21: Proceedings of the 12th ACM Conference on Bioinformatics, Computational Biology, and Health Informatics<br> 
+August 2021; 
 Article No.: 16 Pages 1–11 https://doi.org/10.1145/3459930.3469549
 
 
