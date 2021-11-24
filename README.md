@@ -90,7 +90,7 @@ gurobipy into the python folder causing another permission denied error (not in 
 (6) `pip3 install biopython ` &emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp; &emsp;&emsp;&ensp; Biopython installation.<br>
 (7) `pip3 install pandas` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;&ensp; Pandas installation.<br>
 
-**Now the environment is ready to use. Use commands (i)-(iv). Than multiple runs like (v). See below.**<br>
+**Now the environment is ready to use. Use commands (ii)-(iv). Then multiple runs like (v). See below.**<br>
 **To close virtual environment use (vi).**
 
 ### Step 2B.2 - Run from environment
@@ -122,11 +122,44 @@ Input data is stored in `tests\` folder. In our study we use TreeFam dataset - f
 The folder contains also sample tests and `test_gd_ilp.py` to perform unittest.<br>
 
 **Output data**<br>
-The experimental section describes the evaluation of the results stored at `results\out_name_k_`&sigma;`.csv`<br>
+The experimental section describes the evaluation of the results stored at `results/out_name_k_`&sigma;`.csv`<br>
 Where:<br>
 - name - sim1, ..., sim5, treefam - is the name of the corresponding input dataset<br>
-- k - the value of INTERVAL_LIMIT parameter used<br>
-- &sigma; -the value of MAX_CONVERTED_SPEC parameter used<br>
+- k - the value of INTERVAL_LIMIT parameter used (default or given by user)<br>
+- &sigma; -the value of MAX_CONVERTED_SPEC parameter used (default or given by user)<br>
+
+## Input / Output formats:
+
+### Input file <br>
+Default input is a file in the following format. The first line consist of the number of gene trees n. <br>
+The next n lines represent gene trees. Then, the following line consist of the species tree.<br>
+
+### Output <br>
+
+**1. Console output** <br>
+-- First we display chosen parameters <br>
+-- Next, ILP model details are shown<br>
+-- Last lines consist of:<br>
+---- dictionary of the gene tree support for duplication events (see below)<br>
+---- Total MEscore value <br>
+---- Time of the computation <br>
+_Note, to save above info into save_info_file, run command with `>save_info_file`<br>
+in example`python3 gdilp.py tests/guigo.txt >save_info_file`_ <br>
+
+**2. Detailed output** is stored in`results/out_name_k_`&sigma;`.csv`, where <br>
+k and &sigma; are parameter values (see above), and _name_ is an input file name. <br>
+-- Each row in csv file corresponds to a node _s_ in a species tree. <br> 
+-- Columns in the csv file represent:<br>
+---- Node Cluster - names of all species, which are descendants of _s_; separated by semicolons<br> 
+&emsp; **!!! Note, do not choose semicolon as separator while openning csv file, choose only comma** <br> 
+---- ME score - that corresponds to node _s_; <br>
+&emsp; _ME score denotes number of comparable duplication clusters mapped to s._ <br>
+---- Lets assume ME score for _s_ equals 2. Than we have 2 non-empty pairs of columns:<br>
+&emsp;&emsp; Level 0 support - number of gene trees supporting one duplication event at _s_<br>
+&emsp;&emsp; Level 0 trees - set of id numbers of gene trees supporting one duplication event at _s_<br>
+&emsp;&emsp; Level 1 support - number of gene trees supporting two comparable duplication events at _s_<br>
+&emsp;&emsp; Level 1 trees - set of id numbers of gene trees supporting two comparable duplication events at _s_<br>
+**Note, to obtain Total MEscore value for the species tree, one should sum all values in ME score column.**
 
 ## Examples:
 
