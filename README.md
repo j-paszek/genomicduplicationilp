@@ -8,7 +8,7 @@ gdilp.py [-h] [--intervallimit [INTERVAL_LIMIT]]
 
 ### positional arguments:
 
-`input_file`  &ensp;&ensp;sets the name of the file with the input data;<br>
+`input_file`  &ensp;&ensp; sets the name of the file with the input data;<br>
 &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Default input is a file in RME format. The first line consist of the number of gene trees n. <br>
 &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; The next n lines represent gene trees. Then, the following line consist of the species tree.<br>
 
@@ -51,7 +51,7 @@ Download zipped folder of this repository. Unzip to project source folder (like 
 **-** see https://www.gurobi.com/downloads/gurobi-software/ <br>
 **-** note, it is possible to obtain an academic license <br>
 **-** gurobipy package can be installed by `python3.9 -m pip install gurobipy`<br>
-**-** gurobi licence can be installed by `grbgetkey <licence number>` 
+**-** gurobi licence can be installed by `grbgetkey <licence number>` <br>
 **-** gurobipy version 9.1.1 was used
 
 **2.** **Install other standard python packages if they are missing.** <br>
