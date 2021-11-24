@@ -154,7 +154,7 @@ k and &sigma; are parameter values (see above), and _name_ is an input file name
 &emsp; **!!! Note, do not choose semicolon as separator while openning csv file, choose only comma** <br> 
 ---- ME score - that corresponds to node _s_; <br>
 &emsp; _ME score denotes number of comparable duplication clusters mapped to s._ <br>
----- Lets assume ME score for _s_ equals 2. Than we have 2 non-empty pairs of columns:<br>
+---- Lets assume ME score for _s_ equals 2. Then we have 2 non-empty pairs of columns:<br>
 &emsp;&emsp; Level 0 support - number of gene trees supporting one duplication event at _s_<br>
 &emsp;&emsp; Level 0 trees - set of id numbers of gene trees supporting one duplication event at _s_<br>
 &emsp;&emsp; Level 1 support - number of gene trees supporting two comparable duplication events at _s_<br>
